@@ -6,8 +6,10 @@ spring:
     console:
       enabled: true
   datasource:
-    url: jdbc:h2:mem:testDb
-    username: sa
+    url: jdbc:h2:mem:${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.h2.Driver
 
 api:
   version: v1
@@ -26,4 +28,4 @@ logging:
     org.springframework.security: debug
 
 server:
-  port: 9090
+  port: ${SERVER_PORT}

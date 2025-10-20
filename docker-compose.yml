@@ -1,8 +1,0 @@
-services:
-  api:
-    build: .
-    image: gustavo0426/api-microservice-product-h2:2.0.0
-    container_name: api-microservice-product-h2
-    restart: always
-    ports:
-      - 9090:9090
