@@ -26,6 +26,9 @@ RUN mvn clean package -DskipTests -B
 
 FROM eclipse-temurin:21-jre-alpine
 
+# Variable de entorno para puerto
+ENV SERVER_PORT=
+
 # Crear usuario no-root para seguridad
 RUN addgroup -g 1001 -S product-user && \
     adduser -S -D -H -u 1001 -s /sbin/nologin -G product-user product-user
@@ -39,5 +42,7 @@ RUN chown product-user:product-user test-product-microservice-h2.jar
 # Cambiar a usuario no-root
 USER product-user
 
-EXPOSE 9092
+# Exponer el puerto configurado
+EXPOSE ${SERVER_PORT}
+
 ENTRYPOINT ["java","-jar","./test-product-microservice-h2.jar"]
