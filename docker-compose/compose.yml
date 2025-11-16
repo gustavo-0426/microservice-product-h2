@@ -1,11 +1,11 @@
 services:
 
-  TEMPLATE_SERVICE_NAME:
+  product:
     build: 
       context: ../
       dockerfile: docker-compose/Dockerfile
-    image: gustavo0426/TEMPLATE_IMAGE_NAME:latest
-    container_name: TEMPLATE_CONTAINER_NAME
+    image: gustavo0426/microservice-product-h2:latest
+    container_name: microservice-product
     restart: always
     environment:
       DB_DATABASE: ${DB_DATABASE}
@@ -13,11 +13,11 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       SERVER_PORT: ${SERVER_PORT}
     networks:
-      - TEMPLATE_SERVICE_NAME_network
+      - product_network
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
 
 networks:
-  TEMPLATE_SERVICE_NAME_network:
-    name: TEMPLATE_SERVICE_NAME_network
+  product_network:
+    name: product_network
     driver: bridge  
