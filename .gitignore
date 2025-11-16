@@ -2,6 +2,9 @@ HELP.md
 !**/src/main/**
 !**/src/test/**
 
+## Data sensitive files ##
+*.env
+
 ### STS ###
 .apt_generated
 .classpath
@@ -13,7 +16,6 @@ HELP.md
 
 ### IntelliJ IDEA ###
 .idea
-.jpb
 *.iws
 *.iml
 *.ipr

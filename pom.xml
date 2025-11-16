@@ -8,9 +8,9 @@
 		<version>3.4.1</version>
 	</parent>
 	<groupId>com.co.softworld</groupId>
-	<artifactId>test-product-microservice-h2</artifactId>
+	<artifactId>microservice-product-h2</artifactId>
 	<version>2.0.0</version>
-	<name>test-product-microservice-h2</name>
+	<name>microservice-product-h2</name>
 	<description>This is an api microservice product</description>
 
 	<properties>

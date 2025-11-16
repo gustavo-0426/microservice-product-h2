@@ -1,0 +1,23 @@
+services:
+
+  product:
+    build: 
+      context: ../
+      dockerfile: docker-compose/Dockerfile
+    image: gustavo0426/microservice-product-h2:latest
+    container_name: microservice-product
+    restart: always
+    environment:
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      SERVER_PORT: ${SERVER_PORT}
+    networks:
+      - product_network
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+
+networks:
+  product_network:
+    name: product_network
+    driver: bridge  
