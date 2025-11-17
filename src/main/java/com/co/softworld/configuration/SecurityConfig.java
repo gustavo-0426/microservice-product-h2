@@ -30,6 +30,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(aut -> aut
+                        .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/" + apiVersion + "/microservice/product/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/" + apiVersion + "/microservice/product/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
