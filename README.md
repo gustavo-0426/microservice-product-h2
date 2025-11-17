@@ -79,8 +79,8 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 Una vez que la aplicación esté ejecutándose, puedes acceder a la documentación interactiva:
 
-- **Swagger UI:** [http://localhost:9092/v1/template/swagger-ui/index.html](http://localhost:9092/v1/template/swagger-ui/index.html)
-- **OpenAPI JSON:** [http://localhost:9092/v3/api-docs](http://localhost:9092/v3/api-docs)
+- **Swagger UI:** [http://localhost:9092/v1/product/swagger-ui/index.html](http://localhost:9092/v1/product/swagger-ui/index.html)
+- **OpenAPI JSON:** [http://localhost:9092/v1/product-json](http://localhost:9092/v1/product-json)
 
 ### 🗄️ Administración de Base de Datos
 

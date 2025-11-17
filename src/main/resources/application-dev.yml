@@ -16,14 +16,11 @@ spring:
 api:
   version: v1
 
-# swagger = http://{host}:{port}/{api.version}/custom-swagger/swagger-ui/index.html
-# swagger = http://{host}:{port}/{api.version}/custom-docs
-
 spring-doc:
   api-docs:
-    path: /${api.version}/custom-docs # Cambia la ruta del JSON de OpenAPI
+    path: /${api.version}/product-json # http://{host}:{port}/{api.version}/custom-docs
   swagger-ui:
-    path: /${api.version}/custom-swagger/ # Cambia la ruta de Swagger UI
+    path: /${api.version}/product/ # http://{host}:{port}/{api.version}/custom-swagger/swagger-ui/index.html
 
 logging:
   level:
