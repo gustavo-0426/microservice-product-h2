@@ -14,6 +14,7 @@
 - [🚀 Características](#características)
 - [📋 Requisitos Previos](#requisitos-previos)
 - [⚡ Inicio Rápido (5 minutos)](#inicio-rapido)
+- [💾 Configuración de Bases de Datos](settings-README.md)
 - [📚 API Documentation](#api-documentation)
 - [📞 Contacto](#contacto)
 
@@ -46,9 +47,9 @@
 
 ### 1️⃣ Variables de Entorno
 
-Agregar variables de entorno del proyecto en la siguiente ruta:
+Crear y configurar el archivo de variables de entorno:
 ```bash
-cd /docker-compose/.env
+cp docker-compose/env.example docker-compose/.env
 ```
 
 ### 2️⃣ Ejecutar Aplicación con Docker Compose
@@ -83,9 +84,9 @@ Una vez que la aplicación esté ejecutándose, puedes acceder a la documentaci�
 
 ### 🗄️ Administración de Base de Datos
 
-Para gestionar y administrar la base de datos PostgreSQL, se debe conectar al servidor **pgAdmin**:
+Para gestionar y administrar la base de datos H2, se debe conectar al servidor:
 
-- **pgAdmin:** [http://localhost:5050](http://localhost:5050)
+- [http://localhost:H2_ADMIN_PORT](http://localhost:H2_ADMIN_PORT)
 
 ---
 <br>
