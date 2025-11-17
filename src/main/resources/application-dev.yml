@@ -17,10 +17,10 @@ api:
   version: v1
 
 spring-doc:
-  api-docs:
-    path: /${api.version}/product-json # http://{host}:{port}/{api.version}/custom-docs
   swagger-ui:
-    path: /${api.version}/product/ # http://{host}:{port}/{api.version}/custom-swagger/swagger-ui/index.html
+    path: /${api.version}/product/           # http://{host}:{port}/{api.version}/product/swagger-ui/index.html
+  api-docs:
+    path: /${api.version}/product/api-docs   # http://{host}:{port}/{api.version}/product/api-docs
 
 logging:
   level:
