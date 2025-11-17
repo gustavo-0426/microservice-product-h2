@@ -79,14 +79,33 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 Una vez que la aplicación esté ejecutándose, puedes acceder a la documentación interactiva:
 
-- **Swagger UI:** [http://localhost:9092/v1/template/swagger-ui/index.html](http://localhost:9092/v1/template/swagger-ui/index.html)
-- **OpenAPI JSON:** [http://localhost:9092/v3/api-docs](http://localhost:9092/v3/api-docs)
+- **Swagger UI:** [http://localhost:9092/v1/product/swagger-ui/index.html](http://localhost:9092/v1/product/swagger-ui/index.html)
+- **OpenAPI JSON:** [http://localhost:9092/v1/product-json](http://localhost:9092/v1/product-json)
 
-### 🗄️ Administración de Base de Datos
+### 🗄️ Administración de Base de Datos H2
 
-Para gestionar y administrar la base de datos H2, se debe conectar al servidor:
+La aplicación incluye H2 Console para gestionar y visualizar la base de datos en memoria.
 
-- [http://localhost:H2_ADMIN_PORT](http://localhost:H2_ADMIN_PORT)
+#### Acceso a H2 Console
+
+**URL:** [http://localhost:9092/h2-console](http://localhost:9092/h2-console)
+
+#### Configuración de Conexión
+
+Al acceder a H2 Console, utiliza los siguientes datos de conexión:
+
+| Campo | Valor |
+|-------|-------|
+| **Driver Class** | `org.h2.Driver` |
+| **JDBC URL** | `jdbc:h2:mem:${DB_NAME}` |
+| **User Name** | `${DB_USERNAME}` |
+| **Password** | `${DB_PASSWORD}` |
+
+> **Nota:** Los valores se configuran en el archivo `docker-compose/.env`. H2 es una base de datos en memoria, los datos se perderán al reiniciar la aplicación.
+
+#### Credenciales de Autenticación de la API
+
+Para probar los endpoints REST protegidos, las credenciales de usuario se encuentran configuradas en el archivo `src/main/resources/import.sql`.
 
 ---
 <br>
