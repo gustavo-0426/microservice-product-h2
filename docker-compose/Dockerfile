@@ -9,7 +9,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     update-ca-certificates
 
-WORKDIR /app/test-product-microservice-h2
+WORKDIR /app/microservice-product-h2
 
 # Copiar solo pom.xml para cachear dependencias
 COPY ../pom.xml .
@@ -33,11 +33,11 @@ ENV SERVER_PORT=
 RUN addgroup -g 1001 -S product-user && \
     adduser -S -D -H -u 1001 -s /sbin/nologin -G product-user product-user
 
-WORKDIR /home/test-product-microservice-h2
+WORKDIR /home/microservice-product-h2
 
 # Copiar JAR y cambiar permisos
-COPY --from=build /app/test-product-microservice-h2/target/*.jar ./test-product-microservice-h2.jar
-RUN chown product-user:product-user test-product-microservice-h2.jar
+COPY --from=build /app/microservice-product-h2/target/*.jar ./microservice-product-h2.jar
+RUN chown product-user:product-user microservice-product-h2.jar
 
 # Cambiar a usuario no-root
 USER product-user
@@ -45,4 +45,4 @@ USER product-user
 # Exponer el puerto configurado
 EXPOSE ${SERVER_PORT}
 
-ENTRYPOINT ["java","-jar","./test-product-microservice-h2.jar"]
+ENTRYPOINT ["java","-jar","./microservice-product-h2.jar"]
