@@ -2,8 +2,8 @@ services:
 
   product:
     build: 
-      context: ../
-      dockerfile: docker-compose/Dockerfile
+      context: ./
+      dockerfile: Dockerfile
     image: gustavo0426/microservice-product-h2:${IMAGE_VERSION}
     container_name: microservice-product
     restart: always
