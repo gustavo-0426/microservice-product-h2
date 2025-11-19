@@ -2,8 +2,8 @@ services:
 
   product:
     build: 
-      context: ./
-      dockerfile: Dockerfile
+      context: ../
+      dockerfile: docker-compose/Dockerfile
     image: gustavo0426/microservice-product-h2:${IMAGE_VERSION}
     container_name: microservice-product
     restart: always
@@ -15,7 +15,7 @@ services:
     networks:
       - product_network
     ports:
-      - "80:${SERVER_PORT}"
+      - "${SERVER_PORT}:${SERVER_PORT}"
 
 networks:
   product_network:
