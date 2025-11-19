@@ -14,6 +14,7 @@
 - [🚀 Características](#características)
 - [📋 Requisitos Previos](#requisitos-previos)
 - [⚡ Inicio Rápido (5 minutos)](#inicio-rapido)
+- [☁️ Despliegue en AWS Elastic Beanstalk](#despliegue-aws)
 - [📚 API Documentation](#api-documentation)
 - [📞 Contacto](#contacto)
 
@@ -68,6 +69,92 @@ docker-compose -f docker-compose/compose.yml ps
 ```bash
 docker-compose -f docker-compose/compose.yml logs -f
 ```
+
+---
+<br>
+
+## <a id="despliegue-aws"></a>☁️ Despliegue en AWS Elastic Beanstalk
+
+### 1️⃣ Construir y Subir la Imagen Docker
+
+#### Construir la imagen desde la raíz del proyecto:
+```bash
+docker build -f docker-compose\Dockerfile -t gustavo0426/microservice-product-h2:latest .
+```
+
+#### Login a Docker Hub (solo la primera vez):
+```bash
+docker login
+```
+
+#### Subir la imagen a Docker Hub:
+```bash
+docker push gustavo0426/microservice-product-h2:latest
+```
+
+### 2️⃣ Crear el Paquete de Despliegue
+
+#### Comprimir los archivos necesarios:
+```bash
+Compress-Archive -Path Dockerrun.aws.json,.ebextensions -DestinationPath deploy.zip -Force
+```
+
+**Archivos incluidos en `deploy.zip`:**
+- `Dockerrun.aws.json` - Configuración del contenedor (imagen, puertos)
+- `.ebextensions/01_cloudwatch.config` - Logs de CloudWatch
+
+### 3️⃣ Desplegar en AWS Console
+
+1. Ir a [AWS Elastic Beanstalk Console](https://console.aws.amazon.com/elasticbeanstalk)
+2. Click en **"Create application"**
+3. **Configure environment:**
+   - Environment tier: **Web server environment**
+4. **Application information:**
+   - Application name: `microservice-product` (nombre de tu app)
+5. **Environment information:**
+   - Environment name: Se genera automáticamente o personalízalo
+6. **Platform:**
+   - Platform: **Docker**
+   - Platform branch: **Docker running on 64bit Amazon Linux 2023**
+   - Platform version: Usar la recomendada
+7. **Application code:**
+   - Seleccionar: **Upload your code**
+   - Version label: `v1.0.0` (o tu versión)
+   - Click **"Local file"** -> **"Choose file"** y subir `deploy.zip`
+8. Click en **"Next"** hasta llegar a **"Configure updates, monitoring, and logging"**
+9. En **Environment properties**, agregar las variables de entorno:
+   - `SERVER_PORT` = `5000` (no cambiar, requerido por Elastic Beanstalk)
+   - `DB_NAME` = `nombre_base_de_datos`
+   - `DB_USERNAME` = `usuario_base_de_datos`
+   - `DB_PASSWORD` = `contraseña_base_de_datos`
+10. Click en **"Next"** y luego **"Submit"**
+11. Esperar 3-5 minutos mientras AWS crea todo automáticamente
+
+### 4️⃣ Verificar el Despliegue
+
+Una vez desplegado, tu aplicación estará disponible en:
+```
+http://tu-aplicacion.elasticbeanstalk.com
+```
+
+**Probar los endpoints:**
+
+#### Health check:
+```bash
+curl http://tu-aplicacion.elasticbeanstalk.com/actuator/health
+```
+
+#### Swagger UI:
+```
+http://tu-aplicacion.elasticbeanstalk.com/v1/product/swagger-ui/index.html
+```
+
+#### API con autenticación:
+```bash
+curl -u usuario_base_de_datos:contraseña_base_de_datos http://tu-aplicacion.elasticbeanstalk.com/v1/microservice/product
+```
+
+> **💡 Tip:** Las variables de entorno se configuran en AWS Console (Configuration → Software → Environment properties). Puedes modificarlas sin reconstruir la imagen Docker.
 
 ---
 <br>

@@ -1,26 +1,14 @@
 {
-  "AWSEBDockerrunVersion": "3",
-  "containerDefinitions": [
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "gustavo0426/microservice-product-h2:latest",
+    "Update": "true"
+  },
+  "Ports": [
     {
-      "name": "microservice-product",
-      "image": "gustavo0426/microservice-product-h2:3.0.0",
-      "essential": true,
-      "memory": 512,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 5000
-        }
-      ],
-      "environment": [],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/aws/elasticbeanstalk/microservice-product",
-          "awslogs-region": "us-east-1",
-          "awslogs-stream-prefix": "microservice"
-        }
-      }
+      "ContainerPort": 5000,
+      "HostPort": 80
     }
-  ]
+  ],
+  "Logging": "/var/log/nginx"
 }
