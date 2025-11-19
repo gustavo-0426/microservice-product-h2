@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "microservice-product",
-      "image": "gustavo0426/microservice-product-h2:3.0.0",
+      "image": "gustavo0426/microservice-product-h2:latest",
       "essential": true,
       "memory": 512,
       "portMappings": [
