@@ -12,13 +12,13 @@ RUN apt-get update && \
 WORKDIR /app/microservice-product-h2
 
 # Copiar solo pom.xml para cachear dependencias
-COPY ../pom.xml .
+COPY ./pom.xml .
 
 # Descargar todas las dependencias (se cachea si pom.xml no cambia)
 RUN mvn dependency:go-offline -B
 
 # Copiar código fuente
-COPY ../src ./src
+COPY ./src ./src
 
 # Compilar usando dependencias ya descargadas
 RUN mvn clean package -DskipTests -B

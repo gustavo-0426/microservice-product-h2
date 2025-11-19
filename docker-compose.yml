@@ -2,9 +2,9 @@ services:
 
   product:
     build: 
-      context: ../
-      dockerfile: docker-compose/Dockerfile
-    image: gustavo0426/microservice-product-h2:latest
+      context: ./
+      dockerfile: Dockerfile
+    image: gustavo0426/microservice-product-h2:${IMAGE_VERSION}
     container_name: microservice-product
     restart: always
     environment:
@@ -15,9 +15,9 @@ services:
     networks:
       - product_network
     ports:
-      - "${SERVER_PORT}:${SERVER_PORT}"
+      - "80:${SERVER_PORT}"
 
 networks:
   product_network:
     name: product_network
-    driver: bridge  
+    driver: bridge

@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.co.softworld</groupId>
 	<artifactId>microservice-product-h2</artifactId>
-	<version>2.0.0</version>
+	<version>3.0.0</version>
 	<name>microservice-product-h2</name>
 	<description>This is an api microservice product</description>
 
