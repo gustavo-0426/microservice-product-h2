@@ -7,7 +7,7 @@
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**Aplicación** para proyecto Spring Boot con conexión a base de datos H2. Estructura mínima lista para desarrollar tu aplicación.
+**Microservicio RESTful** desarrollado con Spring Boot y base de datos H2 en memoria. Incluye autenticación básica, documentación Swagger y preparado para despliegue local con Docker Compose o en la nube con AWS Elastic Beanstalk.
 
 ## 📋 Tabla de Contenidos
 
@@ -136,6 +136,8 @@ Una vez desplegado, tu aplicación estará disponible en:
 ```
 http://tu-aplicacion.elasticbeanstalk.com
 ```
+
+> **⚠️ Importante:** Elastic Beanstalk expone automáticamente tu aplicación en el **puerto 80** (HTTP estándar). El mapeo interno `5000 → 80` está configurado en `Dockerrun.aws.json` y no debe modificarse.
 
 **Probar los endpoints:**
 
