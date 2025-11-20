@@ -13,7 +13,7 @@
 
 - [🚀 Características](#características)
 - [📋 Requisitos Previos](#requisitos-previos)
-- [⚡ Inicio Rápido (5 minutos)](#inicio-rapido)
+- [🐳 Despliegue Local con Docker Compose](#inicio-rapido)
 - [☁️ Despliegue en AWS Elastic Beanstalk](#despliegue-aws)
 - [📚 API Documentation](#api-documentation)
 - [📞 Contacto](#contacto)
@@ -43,7 +43,7 @@
 ---
 <br>
 
-## <a id="inicio-rapido"></a>⚡ Inicio Rápido (5 minutos)
+## <a id="inicio-rapido"></a>🐳 Despliegue Local con Docker Compose
 
 ### 1️⃣ Variables de Entorno
 
@@ -163,10 +163,13 @@ curl -u usuario_base_de_datos:contraseña_base_de_datos http://tu-aplicacion.ela
 
 ### 📖 Swagger UI
 
-Una vez que la aplicación esté ejecutándose, puedes acceder a la documentación interactiva:
+**Entorno Local (Docker Compose):**
+- **Swagger UI:** [http://localhost:9092/v1/product/swagger-ui/index.html](http://localhost:9092/v1/product/swagger-ui/index.html)
+- **OpenAPI JSON:** [http://localhost:9092/v1/product/api-docs](http://localhost:9092/v1/product/api-docs)
 
-- **Swagger UI:** [http://localhost:80/v1/product/swagger-ui/index.html](http://localhost:80/v1/product/swagger-ui/index.html)
-- **OpenAPI JSON:** [http://localhost:80/v1/product/api-docs](http://localhost:80/v1/product/api-docs)
+**AWS Elastic Beanstalk:**
+- **Swagger UI:** `http://tu-aplicacion.elasticbeanstalk.com/v1/product/swagger-ui/index.html`
+- **OpenAPI JSON:** `http://tu-aplicacion.elasticbeanstalk.com/v1/product/api-docs`
 
 ### 🗄️ Administración de Base de Datos H2
 
@@ -174,11 +177,15 @@ La aplicación incluye H2 Console para gestionar y visualizar la base de datos e
 
 #### Acceso a H2 Console
 
-**URL:** [http://localhost:80/h2-console](http://localhost:80/h2-console)
+**Entorno Local (Docker Compose):**
+- **URL:** [http://localhost:9092/h2-console](http://localhost:9092/h2-console)
+- **Configuración:** Los valores se obtienen del archivo `docker-compose/.env`
+
+**AWS Elastic Beanstalk:**
+- **URL:** `http://tu-aplicacion.elasticbeanstalk.com/h2-console`
+- **Configuración:** Los valores se obtienen de las Environment properties configuradas en AWS Console
 
 #### Configuración de Conexión
-
-Al acceder a H2 Console, utiliza los siguientes datos de conexión:
 
 | Campo | Valor |
 |-------|-------|
@@ -187,7 +194,7 @@ Al acceder a H2 Console, utiliza los siguientes datos de conexión:
 | **User Name** | `${DB_USERNAME}` |
 | **Password** | `${DB_PASSWORD}` |
 
-> **Nota:** Los valores se configuran en el archivo `docker-compose/.env`. H2 es una base de datos en memoria, los datos se perderán al reiniciar la aplicación.
+> **Nota:** H2 es una base de datos en memoria, los datos se perderán al reiniciar la aplicación.
 
 #### Credenciales de Autenticación de la API
 
