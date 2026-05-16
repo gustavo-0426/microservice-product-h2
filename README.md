@@ -57,17 +57,22 @@ cp docker-compose/env.example docker-compose/.env
 #### Construir y ejecutar:
 
 ```bash
-docker-compose -f docker-compose/compose.yml up -d
+docker compose -f docker-compose/compose.yml up -d
+```
+#### Reconstruir y ejecutar(Cuando hay cambios en el código):
+
+```bash
+docker compose -f docker-compose/compose.yml up -d --build
 ```
 
 #### Verificar contenedores activos:
 ```bash
-docker-compose -f docker-compose/compose.yml ps
+docker compose -f docker-compose/compose.yml ps
 ```
 
 #### Ver logs en tiempo real:
 ```bash
-docker-compose -f docker-compose/compose.yml logs -f
+docker compose -f docker-compose/compose.yml logs -f
 ```
 
 ---
@@ -79,7 +84,7 @@ docker-compose -f docker-compose/compose.yml logs -f
 
 #### Construir la imagen desde la raíz del proyecto:
 ```bash
-docker build -f docker-compose\Dockerfile -t gustavo0426/microservice-product-h2:latest .
+docker build -f docker-compose/Dockerfile -t gustavo0426/microservice-product-h2:latest .
 ```
 
 #### Login a Docker Hub (solo la primera vez):
